@@ -1,0 +1,207 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header {
+  -webkit-box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+          box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+header .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1280px;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .container .logo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 20px;
+}
+
+header .container .logo h1 a {
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+
+header .container nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .container nav .nav__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+}
+
+header .container nav .nav__list li {
+  margin: 15px;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+main .container {
+  max-width: 1280px;
+  margin: auto;
+}
+
+main .container .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 0;
+}
+
+main .container .title h1 {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+main .container .title span {
+  display: block;
+  font-size: 24px;
+}
+
+main .container .stream__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+}
+
+main .container .stream__box .stream__list {
+  display: block;
+  width: 360px;
+  background-color: rgba(157, 183, 230, 0.137);
+  margin: 30px;
+}
+
+main .container .stream__box .stream__list img {
+  width: 100%;
+}
+
+main .container .stream__box .stream__list .stream__data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #857c7c;
+}
+
+main .container .stream__box .stream__list .stream__data .stream__avatar {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}
+
+main .container .stream__box .stream__list .stream__data .stream__avatar img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+main .container .stream__box .stream__list .stream__data .stream__info {
+  margin-left: 10px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+main .container .stream__box .stream__list .stream__data .stream__info .stream__title {
+  color: white;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 280px;
+  font-weight: bold;
+}
+
+main .container .stream__box .stream__list .stream__data .stream__info .stream__channel {
+  color: white;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 280px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=index.css.map */

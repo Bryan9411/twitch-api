@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>twitch</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>
+          <a href="">Twitch Top Games</a>
+        </h1>
+      </div>
+      <nav>
+        <ul class="nav__list"></ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="title">
+        <h1>Game's name</h1>
+        <span>Top 20 popular live streams sorted by current viewers</span>
+      </div>
+      <div class="stream__box"></div>
+    </div>
+  </main>
+  <script>
+    const url = 'https://api.twitch.tv/kraken'
+    const ClientID = '7i8imjlwj0oqyiu3rutgfayf17op3w';
+
+    // 撈取前五個遊戲
+    function getTopGames(cb) {
+      const xhr = new XMLHttpRequest()
+      const errorMessage = '系統不穩定，請再試一次'
+      xhr.open('GET', url + '/games/top?limit=5', true)
+      xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
+      xhr.setRequestHeader("Client-ID", "7i8imjlwj0oqyiu3rutgfayf17op3w")
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          let games
+          try {
+            games = JSON.parse(xhr.response)
+            cb(games)
+            // console.log(games)
+          } catch (error) {
+            cb(errorMessage)
+          }
+        }
+      }
+      xhr.send()
+    }
+
+    // 把資料串接到 nav上
+    getTopGames(function (games) {
+      const topGames = games.top.map((game) => game.game.name)
+      // 拿出 topGames 裡的每個資料並串接到 nav 上
+      for (let i = 0; i < topGames.length; i++) {
+        let li = document.createElement('li')
+        li.innerText = topGames[i]
+        document.querySelector('.nav__list').appendChild(li)
+      }
+
+      // 第一個實況
+      getStreams(topGames[0], function (data) {
+        streams = data.streams
+        for (let i = 0; i < streams.length; i++) {
+          let div = document.createElement('div')
+          div.classList.add('stream__list')
+          div.innerHTML =
+            `
+              <a href = "${streams[i].channel.url}">
+              <img src="${streams[i].preview.large}" alt="">
+              <div class="stream__data">
+                  <div class="stream__avatar">
+                      <img src="${streams[i].channel.logo}" alt="">
+                  </div>
+                  <div class="stream__info">
+                      <div class="stream__title">${streams[i].channel.status}</div>
+                      <div class="stream__channel">${streams[i].channel.name}</div>
+                  </div>
+              </div>
+              </a>
+            `
+          document.querySelector('.stream__box').appendChild(div)
+        }
+      })
+    })
+
+    // 獲取實況資料
+    function getStreams(name, cb) {
+      const xhr = new XMLHttpRequest()
+      const errorMessage = '系統不穩定，請再試一次'
+      // encodeURIComponent 避免字元產生的錯誤，如：&a=1
+      xhr.open('GET', url + '/streams/?game=' + encodeURIComponent(name), true)
+      xhr.setRequestHeader("Accept", "application/vnd.twitchtv.v5+json")
+      xhr.setRequestHeader("Client-ID", "7i8imjlwj0oqyiu3rutgfayf17op3w")
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          let streams
+          try {
+            streams = JSON.parse(xhr.response)
+            cb(streams)
+            // console.log(streams)
+          } catch (error) {
+            cb(errorMessage)
+          }
+        }
+      }
+      xhr.send()
+    }
+
+    // 點擊 nav 把頻道資料串接在畫面上
+    document.querySelector('.nav__list').addEventListener('click', function (e) {
+      e.preventDefault
+      if (e.target.tagName.toLowerCase() === 'li') {
+        let streamName = e.target.innerText
+        document.querySelector('.title h1').innerText = streamName
+        document.querySelector('.stream__box').innerHTML = ''
+        getStreams(streamName, function (data) {
+          let streams = data.streams
+          for (let i = 0; i < streams.length; i++) {
+            let div = document.createElement('div')
+            div.classList.add('stream__list')
+            div.innerHTML =
+              `
+                <a href = "${streams[i].channel.url}">
+                <img src="${streams[i].preview.large}" alt="">
+                <div class="stream__data">
+                    <div class="stream__avatar">
+                        <img src="${streams[i].channel.logo}" alt="">
+                    </div>
+                    <div class="stream__info">
+                        <div class="stream__title">${streams[i].channel.status}</div>
+                        <div class="stream__channel">${streams[i].channel.name}</div>
+                    </div>
+                </div>
+                </a>
+              `
+            document.querySelector('.stream__box').appendChild(div)
+          }
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

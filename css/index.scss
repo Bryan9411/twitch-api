@@ -1,0 +1,117 @@
+@import 'grid';
+@import 'reset';
+
+
+// header
+header{
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+    .container{
+        display: flex;
+        max-width: 1280px;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        .logo{
+            flex: 1;
+            padding: 20px;
+            h1{
+                a{
+                    font-size: 24px;
+                    text-decoration: none;
+                    color: black;
+                }
+                
+            }
+        }
+        nav{
+            display: flex;
+            .nav__list{
+                display: flex;
+                padding:20px;
+                li{
+                    margin:15px;
+                    color: black;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+main{
+    .container{
+        max-width: 1280px;
+        margin: auto;
+        .title{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0; 
+            h1{
+                font-size: 48px;
+                font-weight: bold;
+                padding: 10px 0;
+            }
+            span{
+                display: block;
+                font-size: 24px;
+            }
+        }
+        .stream__box{
+            display: flex;
+            margin: auto;
+            flex-wrap: wrap;
+            align-items: left;
+            .stream__list{
+                display: block;
+                width: 360px;
+                // height: 200px;
+                background-color: rgba(157, 183, 230, 0.137);
+                // padding: 5px;
+                margin: 30px;
+                img{
+                    width: 100%;
+                }
+                .stream__data{
+                    display: flex;
+                    background-color: rgb(133, 124, 124);
+                    .stream__avatar{
+                        width: 60px;
+                        height: 60px;
+                        margin: 5px;
+                        img{
+                            width: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+                    .stream__info{
+                        margin-left: 10px;
+                        margin-top: 10px;
+                        line-height: 1.5;
+                        .stream__title{
+                            color: white;
+                            font-size: 16px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 280px;
+                            font-weight: bold;
+                        }
+                        .stream__channel{
+                            color: white;
+                            font-size: 14px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 280px;
+                            font-weight: bold;
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
